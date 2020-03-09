@@ -11,7 +11,6 @@ import locale
 import numpy as np
 import matplotlib.pyplot as plt
 from matplotlib import cm
-from mpl_toolkits.mplot3d import axes3d, Axes3D
 
 locale.setlocale(locale.LC_ALL,'')
 #Словари хороших и плохих слов
@@ -137,15 +136,3 @@ Graph(lHours,lHAverage,'hourly_average')
 Graph(tDays,lDaysW,'days')
 Graph(tDays,lDCount,'daily_messages')
 Graph(tDays,lDAverage,'daily_average')
-
-
-
-fig= plt.figure()
-ax = fig.gca(projection='3d')
-x,y = np.meshgrid(np.array(lHours),np.arange(0,7,1))
-z = np.array([[i for i in WeekW[j]] for j in tDays])
-ax.plot_surface(x,y, z,cmap=cm.coolwarm)
-#Сохраняем его в файл
-fig.savefig('3Dproj.png')
-
-
